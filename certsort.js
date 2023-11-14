@@ -148,10 +148,10 @@ for(let i = 0; i < certChain.length; i++) {
 const result = [];
 let incIndex = 0;
 let searchFor = certChain[0].commonNames[1]; // first subject is the domain name itself
-if(!/^(((?!-))(xn--|_)?[a-z0-9-]{0,61}[a-z0-9]{1,1}\.)*(xn--)?([a-z0-9][a-z0-9\-]{0,60}|[a-z0-9-]{1,30}\.[a-z]{2,})$/.test(
+if(!/^((((?!-))(xn--|_)?[a-z0-9-]{0,61}[a-z0-9]{1,1}|\*)\.)*(xn--)?([a-z0-9][a-z0-9\-]{0,60}|[a-z0-9-]{1,30}\.[a-z]{2,})$/.test(
   searchFor // check, if first cert is really for the domain name ...
 )) {
-  console.log(certChain[0].commonNames[1]);
+  console.log(searchFor);
   throw new Error('Subject of domain cert is not a valid domain name');
 }
 for(let i = 0; i < certChain.length; i++) {
